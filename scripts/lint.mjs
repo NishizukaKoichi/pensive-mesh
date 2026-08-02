@@ -1,19 +1,28 @@
-import { readFileSync } from "node:fs";
+import { readdirSync, readFileSync } from "node:fs";
 import { relative, resolve } from "node:path";
-import { execFileSync } from "node:child_process";
 
 const root = resolve(import.meta.dirname, "..");
-const files = execFileSync(
-  "rg",
-  ["--files", "apps", "crates", "packages", "schemas", "scripts"],
-  {
-    cwd: root,
-    encoding: "utf8",
-  },
-)
-  .trim()
-  .split("\n")
-  .filter(Boolean);
+const scanRoots = ["apps", "crates", "packages", "schemas", "scripts"];
+const excludedDirectories = new Set(["dist", "gen", "node_modules", "target"]);
+
+function collectFiles(directory) {
+  const files = [];
+  for (const entry of readdirSync(directory, { withFileTypes: true })) {
+    const path = resolve(directory, entry.name);
+    if (entry.isDirectory()) {
+      if (!excludedDirectories.has(entry.name))
+        files.push(...collectFiles(path));
+    } else if (entry.isFile()) {
+      files.push(relative(root, path));
+    }
+  }
+  return files;
+}
+
+const files = scanRoots.flatMap((directory) =>
+  collectFiles(resolve(root, directory)),
+);
+files.sort();
 
 const textFiles = files.filter((file) =>
   /\.(rs|ts|mjs|json|html|css)$/.test(file),
