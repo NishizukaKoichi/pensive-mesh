@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pensive.local/schemas/sync-v1.json",
+  "title": "Pensive Encrypted Sync Segment v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "protocol",
+    "segment_id",
+    "vault_id",
+    "device_id",
+    "key_epoch",
+    "first_hlc",
+    "last_hlc",
+    "event_count",
+    "ciphertext",
+    "signature"
+  ],
+  "properties": {
+    "protocol": { "const": "pensive-sync/1" },
+    "segment_id": { "type": "string" },
+    "vault_id": { "type": "string" },
+    "device_id": { "type": "string" },
+    "key_epoch": { "type": "integer", "minimum": 1 },
+    "first_hlc": { "type": "string" },
+    "last_hlc": { "type": "string" },
+    "event_count": { "type": "integer", "minimum": 1 },
+    "previous_segment_hash": { "type": ["string", "null"] },
+    "ciphertext": { "type": "string", "contentEncoding": "base64" },
+    "signature": { "type": "string", "contentEncoding": "base64" }
+  }
+}

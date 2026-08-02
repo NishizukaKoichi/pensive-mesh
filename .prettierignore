@@ -1,0 +1,5 @@
+docs/PRODUCT_SPEC.md
+apps/desktop/src-tauri/gen/
+target/
+dist/
+node_modules/

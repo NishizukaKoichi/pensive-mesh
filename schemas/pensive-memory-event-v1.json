@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pensive.local/schemas/pensive-memory-event-v1.json",
+  "title": "Pensive Memory Event v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "protocol",
+    "event_id",
+    "vault_id",
+    "device_id",
+    "hlc",
+    "event_type",
+    "payload",
+    "previous_device_event_hash",
+    "created_at",
+    "event_hash",
+    "signature"
+  ],
+  "properties": {
+    "protocol": { "const": "pensive-memory-event/1" },
+    "event_id": { "type": "string", "format": "uuid" },
+    "vault_id": { "type": "string", "format": "uuid" },
+    "device_id": { "type": "string", "minLength": 1 },
+    "hlc": { "type": "string", "minLength": 1 },
+    "event_type": { "type": "string", "pattern": "^[A-Z][A-Z0-9_]+$" },
+    "entity_id": { "type": ["string", "null"] },
+    "expected_revision": { "type": ["integer", "null"], "minimum": 0 },
+    "payload": { "type": "object" },
+    "previous_device_event_hash": { "type": ["string", "null"] },
+    "created_at": { "type": "string", "format": "date-time" },
+    "event_hash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "signature": { "type": "string", "minLength": 40 }
+  }
+}

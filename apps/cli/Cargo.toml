@@ -1,0 +1,13 @@
+[package]
+name = "pensive"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+anyhow.workspace = true
+clap.workspace = true
+pensive-core = { path = "../../crates/pensive-core" }
+rpassword.workspace = true
+serde.workspace = true
+serde_json.workspace = true

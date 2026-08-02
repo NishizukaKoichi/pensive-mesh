@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pensive.local/schemas/context-pack-v1.json",
+  "title": "Pensive Context Pack v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "protocol",
+    "pack_id",
+    "vault_id",
+    "purpose",
+    "query",
+    "created_at",
+    "expires_at",
+    "temporal_cutoff",
+    "target",
+    "policy",
+    "summary",
+    "memory_items",
+    "contradictions",
+    "source_fragments",
+    "omissions",
+    "redactions",
+    "integrity"
+  ],
+  "properties": {
+    "protocol": { "const": "pensive-context-pack/1" },
+    "pack_id": { "type": "string", "format": "uuid" },
+    "vault_id": { "type": "string" },
+    "purpose": { "type": "string", "minLength": 1 },
+    "query": { "type": "string", "minLength": 1 },
+    "created_at": { "type": "string", "format": "date-time" },
+    "expires_at": { "type": "string", "format": "date-time" },
+    "temporal_cutoff": { "type": "string", "format": "date-time" },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["provider", "model", "max_tokens"],
+      "properties": {
+        "provider": { "type": "string" },
+        "model": { "type": "string" },
+        "max_tokens": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "policy": {
+      "type": "object",
+      "required": [
+        "policy_version",
+        "allowed_sensitivity",
+        "include_third_party",
+        "include_candidates",
+        "include_disputed",
+        "secret_allowed"
+      ],
+      "properties": {
+        "policy_version": { "type": "string" },
+        "allowed_sensitivity": {
+          "type": "array",
+          "items": {
+            "enum": ["PERSONAL", "SENSITIVE", "HIGHLY_SENSITIVE", "SECRET"]
+          },
+          "uniqueItems": true
+        },
+        "include_third_party": { "type": "boolean" },
+        "include_candidates": { "type": "boolean" },
+        "include_disputed": { "type": "boolean" },
+        "secret_allowed": { "type": "boolean" }
+      }
+    },
+    "summary": { "type": "string" },
+    "active_constraints": { "type": "array", "items": { "type": "string" } },
+    "goals": { "type": "array", "items": {} },
+    "memory_items": { "type": "array", "items": { "type": "object" } },
+    "contradictions": { "type": "array", "items": { "type": "string" } },
+    "source_fragments": { "type": "array", "items": { "type": "object" } },
+    "omissions": { "type": "array", "items": { "type": "string" } },
+    "redactions": { "type": "array", "items": { "type": "string" } },
+    "integrity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "canonical_digest",
+        "builder_version",
+        "signed_by_device",
+        "signature"
+      ],
+      "properties": {
+        "canonical_digest": {
+          "type": "string",
+          "pattern": "^blake3:[a-f0-9]{64}$"
+        },
+        "builder_version": { "type": "string" },
+        "signed_by_device": { "type": "string" },
+        "signature": { "type": "string" }
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "name": "pensive-mesh",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A local-first, owner-controlled personal context foundation.",
+  "type": "module",
+  "packageManager": "pnpm@10.13.1",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "desktop:dev": "tauri dev",
+    "desktop:build": "tauri build",
+    "frontend:build": "tsc --noEmit && vite build",
+    "lint": "node scripts/lint.mjs && cargo clippy --workspace --all-targets --all-features -- -D warnings",
+    "format": "prettier --write . && cargo fmt --all",
+    "format:check": "prettier --check . && cargo fmt --all -- --check",
+    "typecheck": "tsc --noEmit && cargo check --workspace --all-targets --all-features",
+    "test": "cargo test --workspace --all-features",
+    "test:integration": "cargo test --workspace --all-features --test integration",
+    "build": "pnpm frontend:build && cargo build --workspace --all-features",
+    "verify:mvp": "node scripts/verify-mvp.mjs",
+    "scan:plaintext": "node scripts/scan-plaintext.mjs"
+  },
+  "devDependencies": {
+    "@tauri-apps/api": "^2.8.0",
+    "@tauri-apps/cli": "^2.11.2",
+    "@tauri-apps/plugin-dialog": "^2.4.0",
+    "prettier": "^3.6.2",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.12"
+  }
+}

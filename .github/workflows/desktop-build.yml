@@ -1,0 +1,41 @@
+name: Desktop Build
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "apps/desktop/**"
+      - "crates/pensive-core/**"
+      - "Cargo.toml"
+      - "Cargo.lock"
+      - "package.json"
+      - "pnpm-lock.yaml"
+
+permissions:
+  contents: read
+
+jobs:
+  macos-development-artifact:
+    runs-on: macos-14
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.13.1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - uses: dtolnay/rust-toolchain@1.88.0
+      - uses: Swatinem/rust-cache@v2
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm desktop:build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pensive-mesh-macos-unsigned
+          path: |
+            target/release/bundle/macos/*.app
+            target/release/bundle/dmg/*.dmg
+          if-no-files-found: error
+          retention-days: 14

@@ -1,0 +1,5 @@
+# Pensive Mesh
+
+Pensive Mesh is a local-first desktop application. This development preview contains no owner data and should not be indexed or used as a source of personal context.
+
+The public protocol and security documentation live in the source repository. Runtime vault contents remain encrypted and local unless the owner explicitly exports them.

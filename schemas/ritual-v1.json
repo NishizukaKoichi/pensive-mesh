@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pensive.local/schemas/ritual-v1.json",
+  "title": "Pensive Ritual Contract v1",
+  "type": "object",
+  "required": [
+    "protocol",
+    "ritual_id",
+    "name",
+    "version",
+    "trigger",
+    "intent",
+    "steps",
+    "constraints",
+    "review_state",
+    "automation_level"
+  ],
+  "properties": {
+    "protocol": { "const": "pensive-ritual/1" },
+    "ritual_id": { "type": "string", "format": "uuid" },
+    "name": { "type": "string" },
+    "version": { "type": "string" },
+    "scope": { "type": "string" },
+    "trigger": { "type": "object" },
+    "preconditions": { "type": "array" },
+    "intent": { "type": "string" },
+    "steps": { "type": "array" },
+    "constraints": { "type": "array" },
+    "expected_outcome": { "type": "array" },
+    "exception_conditions": { "type": "array" },
+    "stop_conditions": { "type": "array" },
+    "evidence_episode_ids": { "type": "array", "items": { "type": "string" } },
+    "counterexamples": { "type": "array" },
+    "review_state": {
+      "enum": ["OBSERVED", "SUGGESTED", "CONFIRMED", "REJECTED", "RETIRED"]
+    },
+    "automation_level": {
+      "enum": ["OBSERVE", "SUGGEST", "DRAFT", "SIMULATE", "SPELL_ELIGIBLE"]
+    },
+    "spell_binding": { "type": ["object", "null"] },
+    "review_due_at": { "type": ["string", "null"], "format": "date-time" }
+  }
+}

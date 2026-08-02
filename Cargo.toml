@@ -1,0 +1,43 @@
+[workspace]
+members = [
+  "apps/cli",
+  "apps/desktop/src-tauri",
+  "crates/pensive-core",
+]
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.88"
+authors = ["Koichi Nishizuka"]
+repository = "https://github.com/NishizukaKoichi/pensive-mesh"
+
+[workspace.dependencies]
+anyhow = "1.0.100"
+argon2 = "0.5.3"
+base64 = "0.22.1"
+blake3 = "1.8.2"
+chacha20poly1305 = { version = "0.10.1", features = ["std", "stream"] }
+chrono = { version = "0.4.42", features = ["serde"] }
+clap = { version = "4.5.50", features = ["derive"] }
+ed25519-dalek = { version = "2.2.0", features = ["serde"] }
+getrandom = "0.3.4"
+hex = "0.4.3"
+rpassword = "7.4.0"
+rusqlite = { version = "=0.39.0", default-features = false, features = ["backup", "bundled-sqlcipher-vendored-openssl", "chrono", "functions", "limits", "serde_json", "uuid"] }
+serde = { version = "1.0.228", features = ["derive"] }
+serde_json = "1.0.145"
+tempfile = "3.23.0"
+thiserror = "2.0.17"
+uuid = { version = "1.18.1", features = ["serde", "v4", "v7"] }
+walkdir = "2.5.0"
+zeroize = { version = "1.8.2", features = ["derive"] }
+zip = { version = "2.4.2", default-features = false, features = ["deflate"] }
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = "s"
+panic = "abort"
+strip = true

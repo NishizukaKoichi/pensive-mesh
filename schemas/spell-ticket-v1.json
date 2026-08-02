@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pensive.local/schemas/spell-ticket-v1.json",
+  "title": "Pensive Spell Ticket Draft v1",
+  "description": "An immutable action candidate. It grants no authority and cannot execute an action.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "protocol",
+    "ticket_id",
+    "created_at",
+    "expires_at",
+    "intent_id",
+    "spell",
+    "target",
+    "arguments",
+    "limits_requested",
+    "idempotency_key",
+    "pensive_device_id",
+    "pensive_signature",
+    "state"
+  ],
+  "properties": {
+    "protocol": { "const": "pensive-spell-ticket/1" },
+    "ticket_id": { "type": "string", "format": "uuid" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "expires_at": { "type": "string", "format": "date-time" },
+    "goal_id": { "type": ["string", "null"] },
+    "intent_id": { "type": "string" },
+    "spell": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "version", "definition_hash"],
+      "properties": {
+        "id": { "type": "string" },
+        "version": { "type": "string" },
+        "definition_hash": { "type": "string" }
+      }
+    },
+    "target": { "type": "object" },
+    "arguments": { "type": "object" },
+    "limits_requested": { "type": "object" },
+    "context_pack_id": { "type": ["string", "null"] },
+    "base_world_snapshot_hash": { "type": ["string", "null"] },
+    "simulation_run_id": { "type": ["string", "null"] },
+    "idempotency_key": { "type": "string", "minLength": 1 },
+    "pensive_device_id": { "type": "string" },
+    "pensive_signature": { "type": "string" },
+    "state": { "const": "DRAFT" }
+  }
+}

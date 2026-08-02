@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pensive.local/schemas/simworld-v1.json",
+  "title": "Pensive SimWorld Run v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "protocol",
+    "run_id",
+    "base_snapshot_hash",
+    "action_ref",
+    "proposed_changes",
+    "invariants",
+    "unknowns",
+    "deterministic_result_hash"
+  ],
+  "properties": {
+    "protocol": { "const": "pensive-simworld/1" },
+    "run_id": { "type": "string", "format": "uuid" },
+    "base_snapshot_hash": { "type": "string" },
+    "action_ref": { "type": "object" },
+    "proposed_changes": { "type": "array" },
+    "preconditions": { "type": "array" },
+    "invariants": { "type": "array" },
+    "unknowns": { "type": "array" },
+    "assumptions": { "type": "array" },
+    "recovery_path": { "type": "array" },
+    "deterministic_result_hash": { "type": "string" }
+  }
+}
