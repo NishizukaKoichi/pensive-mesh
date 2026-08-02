@@ -13,10 +13,12 @@ Target: Pensive Mesh v0.1 Local Memory Core
 - Desktop release: arm64 `.app` and DMG built; DMG checksum valid; packaged application launched and remained running during the smoke test
 - CLI release path: help, interactive Vault initialization, unlock, and offline doctor status completed against a disposable encrypted Vault
 - Product spec checksum: verified after formatting and before commit
+- Public repository: `https://github.com/NishizukaKoichi/pensive-mesh`, visibility `PUBLIC`, default branch `main`, license detected as Apache-2.0
+- First complete public gate set: CI, Integration, and Security succeeded for commit `3c1bc3d`
 
 ## Final gate table
 
-The local implementation gates below were run in the canonical repository. The owner selected Apache-2.0; public CI runs after the GitHub repository is created.
+The local implementation gates below were run in the canonical repository. The owner selected Apache-2.0, the repository is public, and the complete GitHub Actions gate set passed.
 
 | Gate                   | Command / evidence                     | Status                                                            |
 | ---------------------- | -------------------------------------- | ----------------------------------------------------------------- |
@@ -38,7 +40,7 @@ The local implementation gates below were run in the canonical repository. The o
 | Browser smoke          | Chrome DevTools automation             | passed                                                            |
 | Browser accessibility  | Lighthouse snapshot                    | 100                                                               |
 | License                | `LICENSE` and package metadata         | passed; Apache-2.0 selected by owner                              |
-| CI                     | GitHub Actions                         | pending publication                                               |
+| CI                     | GitHub Actions                         | passed; CI, Integration, and Security on public `main`            |
 
 ## Recorded release limitations
 

@@ -24,7 +24,8 @@
 - Spell Runtime and Arcane Commons Mesh remain separate repositories and databases.
 - Local format, lint, typecheck, test, integration, build, encrypted-at-rest, recovery, browser, desktop bundle, launch, and dependency-audit gates have run.
 - The arm64 `.app` and valid DMG exist locally; the application is not Developer ID signed or notarized.
-- GitHub authentication is available; `NishizukaKoichi/pensive-mesh` does not yet exist.
+- `https://github.com/NishizukaKoichi/pensive-mesh` is public with `main` as its default branch and Apache-2.0 detected by GitHub.
+- Public CI, Integration, and Security workflows passed for commit `3c1bc3d` after removing an undeclared runner dependency from the safety lint.
 
 ## Constraints
 
@@ -47,7 +48,7 @@
 
 ## Next Actions
 
-- Codex: commit the accepted license, create and publish the GitHub repository, and confirm CI.
+- Maintain the v0.1 security boundary while the explicitly separate v0.2-v1.0 evidence phases proceed.
 
 ## Risks
 
