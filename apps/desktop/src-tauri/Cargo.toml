@@ -3,6 +3,8 @@ name = "pensive-desktop"
 version.workspace = true
 edition.workspace = true
 rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
 
 [lib]
 name = "pensive_desktop_lib"

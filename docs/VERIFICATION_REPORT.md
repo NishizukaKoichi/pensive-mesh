@@ -16,7 +16,7 @@ Target: Pensive Mesh v0.1 Local Memory Core
 
 ## Final gate table
 
-The local implementation gates below were run in the canonical repository. Public CI remains blocked until the owner chooses a code license and the GitHub repository can be created.
+The local implementation gates below were run in the canonical repository. The owner selected Apache-2.0; public CI runs after the GitHub repository is created.
 
 | Gate                   | Command / evidence                     | Status                                                            |
 | ---------------------- | -------------------------------------- | ----------------------------------------------------------------- |
@@ -37,13 +37,14 @@ The local implementation gates below were run in the canonical repository. Publi
 | Rust dependency audit  | `cargo audit`                          | no known vulnerabilities; 17 allowed transitive warnings recorded |
 | Browser smoke          | Chrome DevTools automation             | passed                                                            |
 | Browser accessibility  | Lighthouse snapshot                    | 100                                                               |
-| CI                     | GitHub Actions                         | blocked by owner license decision and publication                 |
+| License                | `LICENSE` and package metadata         | passed; Apache-2.0 selected by owner                              |
+| CI                     | GitHub Actions                         | pending publication                                               |
 
 ## Recorded release limitations
 
 - The Tauri lockfile includes Linux-only GTK3 transitive dependencies that RustSec marks unmaintained; `glib 0.18.5` also has an unsound advisory. They are not linked into the tested macOS arm64 artifact. The upgrade is tracked in the debt register rather than hidden.
 - The app bundle has only an ad-hoc linker signature. Gatekeeper distribution requires an owner-controlled Apple Developer identity, signing, notarization, and a separate release approval.
-- GitHub publication is intentionally not attempted without a license because public visibility alone does not authorize reuse.
+- Source publication is authorized under Apache-2.0. Signed binary publication remains a separate release gate.
 
 ## v1.0 external blockers
 

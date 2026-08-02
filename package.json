@@ -3,6 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "description": "A local-first, owner-controlled personal context foundation.",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NishizukaKoichi/pensive-mesh.git"
+  },
   "type": "module",
   "packageManager": "pnpm@10.13.1",
   "scripts": {

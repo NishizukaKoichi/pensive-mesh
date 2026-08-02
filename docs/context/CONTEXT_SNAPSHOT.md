@@ -30,7 +30,7 @@
 
 - Canonical development occurs only under the writable, resolved `/Volumes/Pensive` mount.
 - No network/model access is required for the first usable journey.
-- The code license is an owner decision; publication is gated until that ADR is resolved.
+- The owner selected Apache-2.0; the license text and package metadata must remain consistent.
 - Security boundaries take precedence over feature breadth.
 
 ## Decisions
@@ -39,15 +39,15 @@
 - 2026-08-02: Use a Rust core shared by the CLI and Tauri desktop; keep the UI thin and the protocol schemas public.
 - 2026-08-02: Use SQLCipher, XChaCha20-Poly1305, BLAKE3, Ed25519, and Argon2id through maintained libraries; no custom cryptography.
 - 2026-08-02: Do not copy or mutate the separate `pensieve-local` prototype.
+- 2026-08-02: Publish Pensive Mesh v0.1 under Apache License 2.0.
 
 ## Open Questions
 
-- Blocking before public-use publication: owner code-license choice.
-- Non-blocking for v0.1: production signing identity and remote Arcane deployment.
+- Non-blocking for v0.1 source publication: production signing identity and remote Arcane deployment.
 
 ## Next Actions
 
-- Codex: commit the verified v0.1 implementation, resolve the owner license gate, create and publish the GitHub repository, and confirm CI.
+- Codex: commit the accepted license, create and publish the GitHub repository, and confirm CI.
 
 ## Risks
 

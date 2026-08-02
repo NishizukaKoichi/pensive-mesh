@@ -230,4 +230,4 @@ v0.1 の対象範囲は local memory core です。v1.0 を名乗るには、少
 
 ## License
 
-コード license は所有者の最終決定待ちです。公開 visibility だけでは再利用許諾にならないため、`LICENSE` が追加されるまで code は public review only です。候補と影響は [ADR 0002](docs/adr/0002-license-decision-required.md) に記録しています。
+Pensive Mesh のコードとリポジトリ内文書は、個別に別条件が明記されているものを除き [Apache License 2.0](LICENSE) で公開します。利用・改変・再配布の際はライセンス条件を確認してください。選定理由は [ADR 0002](docs/adr/0002-license-decision-required.md) に記録しています。

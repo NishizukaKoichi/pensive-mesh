@@ -42,4 +42,4 @@ Dependency additions/removals are medium-impact decisions. Record the purpose, a
 
 ## License note
 
-The repository's code license is not active until the owner resolves ADR 0002 and adds `LICENSE`. Contributions should not be submitted before that decision because later relicensing may require contributor consent.
+Pensive Mesh is licensed under Apache-2.0. Unless explicitly stated otherwise, intentionally submitted contributions are accepted under the same license, as described by Section 5 of `LICENSE`.
